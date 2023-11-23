@@ -1,6 +1,6 @@
-# Next Word Prediction Tool with Deep Learning
+# AI-Powered Next Word Prediction Tool with Deep Learning
 
-A Next Word Prediction tool using a Long Short-Term Memory (LSTM) neural network. The model is trained on the Reuters corpus using TensorFlow and NLTK.
+A AI-Powered Next Word Prediction tool using a Long Short-Term Memory (LSTM) neural network. The model is trained on the Reuters corpus using TensorFlow and NLTK.
 
 ## Dependencies
 
@@ -29,7 +29,7 @@ python -m nltk.downloader reuters
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/NoorMahammad-S/Next_Word_Prediction_Tool_with_Deep_Learning.git
+git clone https://github.com/NoorMahammad-S/AI-Powered_Next_Word_Prediction_Tool_with_Deep_Learning.git
 cd Next_Word_Prediction_Tool_with_Deep_Learning
 ```
 
