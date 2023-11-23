@@ -12,10 +12,11 @@ nltk.download('reuters')
 
 # Load the Reuters corpus
 corpus = reuters.sents()
+corpus_text = [' '.join(sent) for sent in corpus]
 
 # Tokenize the sentences
 tokenizer = Tokenizer()
-tokenizer.fit_on_texts(corpus)
+tokenizer.fit_on_texts(corpus_text)
 total_words = len(tokenizer.word_index) + 1
 
 # Create input sequences and their corresponding labels
@@ -44,11 +45,14 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.fit(X, y, epochs=100, verbose=1)
 
 # Function to generate the next word
-def generate_next_word(seed_text, model, tokenizer, max_sequence_length):
+def generate_next_word(seed_text, model, tokenizer, max_sequence_length, temperature=1.0):
     for _ in range(10):  # Adjust the number of words to predict
         token_list = tokenizer.texts_to_sequences([seed_text])[0]
         token_list = pad_sequences([token_list], maxlen=max_sequence_length-1, padding='pre')
-        predicted = model.predict_classes(token_list, verbose=0)
+        probabilities = model.predict(token_list, verbose=0)[0]
+        scaled_probabilities = np.log(probabilities) / temperature
+        exp_probabilities = np.exp(scaled_probabilities)
+        predicted = np.argmax(exp_probabilities / np.sum(exp_probabilities))
         output_word = ""
         for word, index in tokenizer.word_index.items():
             if index == predicted:
@@ -56,6 +60,7 @@ def generate_next_word(seed_text, model, tokenizer, max_sequence_length):
                 break
         seed_text += " " + output_word
     return seed_text
+
 
 # Test the model
 seed_text = "The company"
