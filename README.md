@@ -1,3 +1,5 @@
+# ```                AI & ML Project                ```
+
 # AI-Powered Next Word Prediction Tool with Deep Learning
 
 A AI-Powered Next Word Prediction tool using a Long Short-Term Memory (LSTM) neural network. The model is trained on the Reuters corpus using TensorFlow and NLTK.
