@@ -32,13 +32,13 @@ python -m nltk.downloader reuters
 
 ```bash
 git clone https://github.com/NoorMahammad-S/AI-Powered_Next_Word_Prediction_Tool_with_Deep_Learning.git
-cd Next_Word_Prediction_Tool_with_Deep_Learning
+cd AI-Powered_Next_Word_Prediction_Tool_with_Deep_Learning
 ```
 
-2. Run the `text_generation_lstm.py` script to train the LSTM model:
+2. Run the `main.py` script to train the LSTM model:
 
 ```bash
-python text_generation_lstm.py
+python main.py
 ```
 
 3. After training, you can use the generated model to predict the next word in a sequence. Modify the `seed_text` variable in the script to change the starting point for text generation.
