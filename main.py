@@ -16,7 +16,9 @@ corpus_text = [' '.join(sent) for sent in corpus]
 
 # Tokenize the sentences
 tokenizer = Tokenizer()
-tokenizer.fit_on_texts(corpus_text)
+for sentence in corpus_text:
+    token_list = tokenizer.texts_to_sequences([sentence])[0]
+
 total_words = len(tokenizer.word_index) + 1
 
 # Create input sequences and their corresponding labels
@@ -48,7 +50,7 @@ model.fit(X, y, epochs=100, verbose=1)
 def generate_next_word(seed_text, model, tokenizer, max_sequence_length, temperature=1.0):
     for _ in range(10):  # Adjust the number of words to predict
         token_list = tokenizer.texts_to_sequences([seed_text])[0]
-        token_list = pad_sequences([token_list], maxlen=max_sequence_length-1, padding='pre')
+        token_list = pad_sequences([token_list], maxlen=max_sequence_length, padding='pre')
         probabilities = model.predict(token_list, verbose=0)[0]
         scaled_probabilities = np.log(probabilities) / temperature
         exp_probabilities = np.exp(scaled_probabilities)
