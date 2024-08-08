@@ -50,5 +50,4 @@ predicted_text = generate_next_word(seed_text, model, tokenizer, max_sequence_le
 print(predicted_text)
 ```
 
-Feel free to experiment with the model architecture, training parameters, and text generation settings to suit your needs.
 
