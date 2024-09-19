@@ -49,4 +49,3 @@ seed_text = "The company"
 predicted_text = generate_next_word(seed_text, model, tokenizer, max_sequence_length)
 print(predicted_text)
 ```
-
